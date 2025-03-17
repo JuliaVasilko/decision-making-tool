@@ -1,0 +1,17 @@
+ul {
+  padding: 0;
+  width: 600px;
+}
+
+ul li {
+  align-content: space-between;
+  align-items: center;
+  background-color: #87ceeb;
+  border: 2px solid #000;
+  border-radius: 5px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 40px 3fr 1fr 80px;
+  margin-bottom: 5px;
+  padding: 5px;
+}

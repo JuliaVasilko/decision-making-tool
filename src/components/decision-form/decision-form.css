@@ -1,0 +1,31 @@
+form {
+  align-content: space-between;
+  align-items: stretch;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 60px 60px 60px 80px;
+  margin-inline: auto;
+  padding: 10px;
+  row-gap: 15px;
+  width: 300px;
+
+  .middle-btn {
+    grid-column: 1 / 5;
+    justify-self: center;
+  }
+
+  .short-btn {
+    margin: 0;
+    padding: 5px;
+  }
+}
+
+.disabled {
+  button,
+  a,
+  label {
+    border: 1px solid #000;
+    box-shadow: unset;
+    opacity: 0.5;
+  }
+}

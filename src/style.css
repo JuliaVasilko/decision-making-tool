@@ -1,0 +1,13 @@
+body {
+  background-color: #4682b4;
+  color: #f0ffff;
+  display: flex;
+  font-family: Georgia, Times, serif;
+  justify-content: center;
+  padding: 20px;
+  text-transform: uppercase;
+}
+
+* {
+  box-sizing: border-box;
+}
