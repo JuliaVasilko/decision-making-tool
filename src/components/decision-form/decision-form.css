@@ -18,6 +18,8 @@ form {
     margin: 0;
     padding: 5px;
   }
+
+  
 }
 
 .disabled {
@@ -28,4 +30,8 @@ form {
     box-shadow: unset;
     opacity: 0.5;
   }
+}
+
+.active {
+  background-color: #f00;
 }

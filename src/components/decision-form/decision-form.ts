@@ -85,6 +85,7 @@ export class DecisionForm extends Component<HTMLFormElement> {
   }
 
   private toggleSound(event?: Event): void {
+    event?.preventDefault();
     this.sound = !this.sound;
     (event!.target as HTMLButtonElement).classList.toggle("active");
   }

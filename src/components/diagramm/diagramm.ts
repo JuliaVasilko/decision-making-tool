@@ -10,7 +10,7 @@ export class Diagramm extends Component<HTMLCanvasElement> {
   private decisionList: Decision[];
   private colors: string[];
   private startTime?: number;
-  private speed = 1;
+  private speed = 10;
   private minSpeed = 0.5;
   private deceleration?: number;
 
@@ -29,6 +29,8 @@ export class Diagramm extends Component<HTMLCanvasElement> {
   public async spinWheel(duration: number): Promise<string> {
     this.duration = duration;
     this.startTime = performance.now();
+
+    this.resetData();
 
     return new Promise((resolve, reject) => {
       this.animationFrame = requestAnimationFrame(
@@ -139,6 +141,7 @@ export class Diagramm extends Component<HTMLCanvasElement> {
     if (!context) return;
 
     this.deceleration = this.speed / (this.duration! / 16);
+
     const elapsed = time - this.startTime!;
     if (elapsed >= this.duration!) {
       cancelAnimationFrame(this.animationFrame!);
@@ -170,13 +173,10 @@ export class Diagramm extends Component<HTMLCanvasElement> {
 
     const pointerAngle = (Math.PI / 2) * 3;
 
-    let startAngle = this.currentAngle % (2 * Math.PI);
-
+    let startAngle = this.currentAngle;
     for (const item of this.decisionList) {
       const sliceAngle = (Number(item.weight) / totalWeight) * 2 * Math.PI;
-      let endAngle = startAngle + sliceAngle;
-      endAngle = endAngle % (2 * Math.PI);
-
+      const endAngle = startAngle + sliceAngle;
       if (pointerAngle >= startAngle && pointerAngle < endAngle) {
         return item.title;
       }
@@ -241,5 +241,11 @@ export class Diagramm extends Component<HTMLCanvasElement> {
 
     context.fillText(text, 0, 0);
     context.restore();
+  }
+
+  private resetData(): void {
+    this.speed = 10;
+    this.deceleration = 0;
+    this.currentAngle = 0;
   }
 }
